@@ -1,6 +1,7 @@
 defmodule Findit.Router do
   use Findit.Web, :router
   use Coherence.Router
+  use ExAdmin.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -20,11 +21,26 @@ defmodule Findit.Router do
     plug Coherence.Authentication.Session, protected: true  # Add this
   end
 
+  pipeline :protected_admin do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug Coherence.Authentication.Session, protected: true
+    plug Findit.Plugs.Authorized
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   # Add this block
+  scope "/" do
+    pipe_through :protected_admin
+    coherence_routes :protected_admin
+  end
+
   scope "/" do
     pipe_through :browser
     coherence_routes
@@ -40,6 +56,11 @@ defmodule Findit.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+  end
+
+  scope "/admin", ExAdmin do
+    pipe_through :protected_admin
+    admin_routes
   end
 
   # Other scopes may use custom stacks.

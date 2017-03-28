@@ -19,7 +19,7 @@ defmodule Findit.Mixfile do
   def application do
     [mod: {Findit, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :coherence]]
+                    :phoenix_ecto, :postgrex, :coherence, :ex_admin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule Findit.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:coherence, "~> 0.3"}]
+     {:coherence, "~> 0.3"},
+     {:ex_admin, github: "smpallen99/ex_admin"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

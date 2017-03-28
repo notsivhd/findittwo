@@ -17,6 +17,14 @@ config :findit, Findit.Endpoint,
   pubsub: [name: Findit.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :ex_admin,
+   repo: Findit.Repo,
+   module: Findit,
+   modules: [
+     Findit.ExAdmin.Dashboard,
+     Findit.ExAdmin.User
+   ]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
@@ -40,3 +48,5 @@ config :coherence, Findit.Coherence.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
   api_key: "your api key here"
 # %% End Coherence Configuration %%
+
+config :xain, :after_callback, {Phoenix.HTML, :raw}
