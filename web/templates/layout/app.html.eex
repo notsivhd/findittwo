@@ -11,26 +11,34 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
   </head>
 
   <body>
-    <div class="container">
+
+    <div class="container" >
       <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= if Coherence.current_user(@conn) do %>
-              <%= if @conn.assigns[:remembered] do %>
-                <li style="color: red;">!!</li>
+
+        <div class="">
+          <nav role="navigation">
+            <ul class="nav nav-pills pull-right" style="padding-top:5%;">
+              <%= if Coherence.current_user(@conn) do %>
+                <%= if @conn.assigns[:remembered] do %>
+                  <li style="color: red;">!!</li>
+                <% end %>
               <% end %>
-            <% end %>
-            <%= Findit.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
+              <%= Findit.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>
+            </ul>
+          </nav>
+        </div>
+
+        <div style="margin-top:5%;">
+            <span class="logo"></span>
+        </div>
+
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
