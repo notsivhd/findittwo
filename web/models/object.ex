@@ -2,6 +2,7 @@ defmodule Findit.Object do
   use Findit.Web, :model
   use Arc.Ecto.Schema
 
+  # The object model for the database
   schema "objects" do
     field :name, :string
     field :description, :string

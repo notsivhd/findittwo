@@ -2,6 +2,7 @@ defmodule Findit.User do
   use Findit.Web, :model
   use Coherence.Schema
 
+  # The actual user model for the data base
   schema "users" do
     field :name, :string
     field :email, :string

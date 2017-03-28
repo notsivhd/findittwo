@@ -35,7 +35,7 @@ config :logger, :console,
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
 
-# %% Coherence Configuration %%   Don't remove this line
+# %% Coherence Configuration %%  
 config :coherence,
   user_schema: Findit.User,
   repo: Findit.Repo,
