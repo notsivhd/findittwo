@@ -1,0 +1,30 @@
+<h2>Listing objects</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for object <- @objects do %>
+    <tr>
+      <td><%= object.name %></td>
+      <td><%= object.description %></td>
+      <td><%= object.status %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: object_path(@conn, :show, object), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: object_path(@conn, :edit, object), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: object_path(@conn, :delete, object), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New object", to: object_path(@conn, :new) %>

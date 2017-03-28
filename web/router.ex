@@ -58,6 +58,11 @@ defmodule Findit.Router do
     get "/", PageController, :index
   end
 
+  scope "/objects", Findit do
+    pipe_through :protected
+    resources "/", ObjectController
+  end
+
   scope "/admin", ExAdmin do
     pipe_through :protected_admin
     admin_routes

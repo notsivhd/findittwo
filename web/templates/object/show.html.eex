@@ -1,0 +1,23 @@
+<h2>Show object</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @object.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @object.description %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @object.status %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: object_path(@conn, :edit, @object) %>
+<%= link "Back", to: object_path(@conn, :index) %>
