@@ -1,10 +1,12 @@
 defmodule Findit.Object do
   use Findit.Web, :model
+  use Arc.Ecto.Schema
 
   schema "objects" do
     field :name, :string
     field :description, :string
     field :status, :boolean, default: false
+    field :image, Findit.ImageUploader.Type
 
     timestamps()
   end
@@ -14,7 +16,7 @@ defmodule Findit.Object do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :description, :status])
-    |> validate_required([:name, :description, :status])
+    |> cast(params, [:name, :description, :status, :image])
+    |> validate_required([:name, :description, :status, :image])
   end
 end

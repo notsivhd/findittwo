@@ -22,7 +22,8 @@ config :ex_admin,
    module: Findit,
    modules: [
      Findit.ExAdmin.Dashboard,
-     Findit.ExAdmin.User
+     Findit.ExAdmin.User,
+     Findit.ExAdmin.Object
    ]
 
 # Configures Elixir's Logger

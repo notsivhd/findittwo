@@ -6,6 +6,7 @@ defmodule Findit.Repo.Migrations.CreateObject do
       add :name, :string
       add :description, :string
       add :status, :boolean, default: false, null: false
+      add :image, :string
 
       timestamps()
     end
