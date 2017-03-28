@@ -1,13 +1,13 @@
 <h2>Listing objects</h2>
 
-<table class="table">
+<table id="objects" class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Status</th>
-
-      <th></th>
+      <th>Image</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
@@ -41,5 +41,13 @@
 <% end %>
   </tbody>
 </table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#objects').DataTable({
+      stateSave: true,
+    });
+});
+</script>
 
 <%= link "New object", to: object_path(@conn, :new) %>
