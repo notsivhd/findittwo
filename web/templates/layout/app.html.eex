@@ -19,26 +19,19 @@
 
   <body>
 
-    <div class="container" >
+    <div class="container">
       <header class="header">
-
-        <div class="">
-          <nav role="navigation">
-            <ul class="nav nav-pills pull-right" style="padding-top:5%;">
-              <%= if Coherence.current_user(@conn) do %>
-                <%= if @conn.assigns[:remembered] do %>
-                  <li style="color: red;">!!</li>
-                <% end %>
+        <nav role="navigation">
+          <ul class="nav nav-pills pull-right">
+            <%= if Coherence.current_user(@conn) do %>
+              <%= if @conn.assigns[:remembered] do %>
+                <li style="color: red;">!!</li>
               <% end %>
-              <%= Findit.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>
-            </ul>
-          </nav>
-        </div>
-
-        <div style="margin-top:5%;">
-            <span class="logo"></span>
-        </div>
-
+            <% end %>
+            <%= Findit.Coherence.ViewHelpers.coherence_links(@conn, :layout) %>
+          </ul>
+        </nav>
+        <span class="logo"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
